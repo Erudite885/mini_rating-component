@@ -14,7 +14,7 @@ const RatingComponent: React.FC = () => {
   //Submit handler
   const handleSubmit = () => {
     if (!rate) {
-      console.log('please select a rating')
+      alert('please select a rating')
       setSubmitted(false)
     } else {
 
@@ -25,7 +25,7 @@ const RatingComponent: React.FC = () => {
  
 
   return (
-    <div className='bg-gray-800 rounded-2xl mx-4 p-6'>
+    <div className='bg-gray-800 rounded-2xl mx-4 p-6 max-w-[320px]'>
       {
         !submitted
           ?
@@ -40,7 +40,7 @@ const RatingComponent: React.FC = () => {
             key={value}
             onClick={() => handleRating(value)}
             // bg-white py-[5px] px-[10px] rounded-full  ${rate === value ? 'bg-[#f0c040]' :''}`
-            className={`${rate === value ? 'bg-orange-500 text-slate-100 bg-opacity-95 hover:bg-orange-500 hover:text-slate-100' : ''} m-[5px] text-xs sm:text-sm md:text-base bg-gray-900 bg-opacity-70 text-slate-400 rounded-full hover:bg-gray-400 hover:text-slate-200 `}> {value}</button>
+            className={`${rate === value ? 'bg-orange-500 text-slate-100 bg-opacity-95 hover:bg-orange-500 ' : ''} m-[5px] text-xs sm:text-sm bg-gray-900 bg-opacity-70 text-slate-200 rounded-full hover:bg-gray-400 hover:text-slate-200 `}> {value}</button>
         ))}
         </div>
         <button onClick={handleSubmit} className='px-4 py-2 bg-orange-600 text-white border-none focus:outline-[0] hover:bg-slate-50 hover:text-orange-500 active:bg-slate-50 active:text-orange-500 mt-5 uppercase tracking-widest rounded-3xl'>Submit</button>
