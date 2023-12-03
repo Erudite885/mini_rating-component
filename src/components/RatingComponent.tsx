@@ -4,7 +4,25 @@ import Thankyou from './Thankyou'
 
 const RatingComponent: React.FC = () => {
   const [submitted, setSubmitted] = useState(false)
-  const [rate, setRate] = useState(0)
+  const [rate, setRate] = useState<number | null>(null)
+ 
+  // Rating handler
+  const handleRating = (value: React.SetStateAction<number | null>) => {
+    setRate(value)
+  }
+
+  //Submit handler
+  const handleSubmit = () => {
+    if (!rate) {
+      console.log('please select a rating')
+      setSubmitted(false)
+    } else {
+
+      setSubmitted(true)
+    }
+  }
+
+ 
 
   return (
     <div className='bg-gray-800 rounded-2xl mx-4 p-6'>
@@ -18,10 +36,14 @@ const RatingComponent: React.FC = () => {
         <h2 className='font-bold text-xl md:text-2xl text-slate-200 py-2'>How did we do?</h2>
         <p className='text-sm md:text-lg text-slate-400 mb-4'>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
         <div className=''>{[1, 2, 3, 4, 5].map((value) => (
-          <button key={value} className='text-xs sm:text-sm md:text-base m-1 bg-gray-900 bg-opacity-70 text-slate-400 rounded-full hover:border-none hover:bg-slate-400 hover:text-slate-200 active:bg-orange-500 active:text-slate-200 focus:outline-none '>{value}</button>
+          <button
+            key={value}
+            onClick={() => handleRating(value)}
+            // bg-white py-[5px] px-[10px] rounded-full  ${rate === value ? 'bg-[#f0c040]' :''}`
+            className={`${rate === value ? 'bg-orange-500 text-slate-100 bg-opacity-95 hover:bg-orange-500 hover:text-slate-100' : ''} m-[5px] text-xs sm:text-sm md:text-base bg-gray-900 bg-opacity-70 text-slate-400 rounded-full hover:bg-gray-400 hover:text-slate-200 `}> {value}</button>
         ))}
         </div>
-        <button className='px-4 py-2 bg-orange-600 text-white border-none focus:outline-[0] hover:bg-slate-50 hover:text-orange-500 active:bg-slate-50 active:text-orange-500 mt-5 uppercase tracking-widest rounded-3xl'>Submit</button>
+        <button onClick={handleSubmit} className='px-4 py-2 bg-orange-600 text-white border-none focus:outline-[0] hover:bg-slate-50 hover:text-orange-500 active:bg-slate-50 active:text-orange-500 mt-5 uppercase tracking-widest rounded-3xl'>Submit</button>
         </div>
         :
         <Thankyou rating={rate} />
