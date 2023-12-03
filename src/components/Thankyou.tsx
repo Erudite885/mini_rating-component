@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Thankyou: React.FC = ({rating}:any) => {
+interface ThankyouProps {
+  rating: number | null;
+}
+
+const Thankyou: React.FC<ThankyouProps> = ({ rating }) => {
+ 
+  // Thankyou redirection time out
+  useEffect(() => {
+    const thankyouTimeout = setTimeout(() => {
+      window.location.href = '/'
+    }, 3000);
+
+    return () => clearTimeout(thankyouTimeout)
+  },[])
+
   return (
    
       <div className='flex flex-col items-center '>
