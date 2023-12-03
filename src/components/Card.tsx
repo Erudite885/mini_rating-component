@@ -1,8 +1,15 @@
 import React from 'react'
 
-const Card: React.FC = ({ children }:React.PropsWithChildren) => {
+interface cardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const Card: React.FC<cardProps> = ({ children, className }) => {
+  const cardClasses = `card ${className || ''}`
+  
   return (
-      <div className='bg-gray-800 rounded-2xl mx-4 p-6'>{children}</div>
+      <div className={cardClasses}>{children}</div>
   )
 }
 
