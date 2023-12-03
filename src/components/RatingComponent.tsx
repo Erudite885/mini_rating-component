@@ -31,7 +31,7 @@ const RatingComponent: React.FC = () => {
           ?
           <div className='flex flex-col'>
         <div className='bg-gray-500 bg-opacity-25 rounded-full w-12 h-12 mb-4 flex justify-center items-center'>
-          <img src="../../public/vite.svg" alt="rating_star-logo" className='w-6 h-6 object-contain'  />
+          <img src="../../vite.svg" alt="rating_star-logo" className='w-6 h-6 object-contain'  />
         </div>
         <h2 className='font-bold text-xl md:text-2xl text-slate-200 py-2'>How did we do?</h2>
         <p className='text-sm md:text-lg text-slate-400 mb-4'>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
